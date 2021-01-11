@@ -1,17 +1,15 @@
 # google-authenticator-android
 google-authenticator-android is a fork and patch of Google Authenticator for Android (open source version) to demonstrate NAuth Project  
 
-Google Authenticator for Android (open source version)
-======================================================
-Copyright 2010 Google Inc.
+## Google Authenticator for Android (open source version)
+Copyright 2010 Google Inc.  
 
 https://github.com/google/google-authenticator-android
 
 This project is an older fork of the one on the Play store. It's an older
 version that doesn't get changes synced to it from the Play store version.
 
-Description
------------
+## Description
 The Google Authenticator project includes implementations of one-time passcode
 generators for several mobile platforms, as well as a pluggable authentication
 module (PAM). One-time passcodes are generated using open standards developed by
