@@ -1,0 +1,74 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 28
+    buildToolsVersion '28.0.3'
+    useLibrary 'org.apache.http.legacy'
+    // Update: 25/02/2020. If targetSdkVersion 28, Gradle automatically adds 'android.test.runner' as a dependency.
+    useLibrary 'android.test.runner'
+
+    defaultConfig {
+        applicationId "com.google.android.apps.authenticator2"
+//        minSdkVersion 14
+        targetSdkVersion 28
+
+        testApplicationId "com.google.android.apps.authenticator2.tests"
+        testInstrumentationRunner "android.test.InstrumentationTestRunner"
+//        minSdkVersion 14
+    }
+
+//    productFlavors {
+//        playStore {
+//        }
+//        openSource {
+//            applicationId "com.google.android.apps.authenticator2.os"
+//            testApplicationId "com.google.android.apps.authenticator2.tests.os"
+//        }
+//        openSourceDev {
+//            applicationId "com.google.android.apps.authenticator2.osdev"
+//            testApplicationId "com.google.android.apps.authenticator2.tests.osdev"
+//        }
+//    }
+
+    // Update: 25/02/2020.
+    // https://developer.android.com/studio/build/build-variants?utm_source=android-studio#product-flavors
+    // Specifies one flavor dimension.
+    flavorDimensions "version"
+    productFlavors {
+        openSource {
+            // Assigns this product flavor to the "version" flavor dimension.
+            // If you are using only one dimension, this property is optional,
+            // and the plugin automatically assigns all the module's flavors to
+            // that dimension.
+            dimension "version"
+            applicationIdSuffix ".os"
+            versionNameSuffix "-os"
+        }
+        openSourceDev {
+            dimension "version"
+            applicationIdSuffix ".osdev"
+            versionNameSuffix "-osdev"
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+        }
+    }
+
+    repositories {
+        jcenter()
+    }
+
+    dependencies {
+        // Update: 25/02/2020.
+//        androidTestCompile "org.mockito:mockito-core:1.9.5"
+//        androidTestCompile "com.google.dexmaker:dexmaker:1.2"
+//        androidTestCompile "com.google.dexmaker:dexmaker-mockito:1.2"
+        androidTestImplementation "org.mockito:mockito-core:1.9.5"
+        androidTestImplementation "com.google.dexmaker:dexmaker:1.2"
+        androidTestImplementation "com.google.dexmaker:dexmaker-mockito:1.2"
+    }
+}
